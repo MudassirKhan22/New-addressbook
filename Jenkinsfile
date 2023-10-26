@@ -4,7 +4,7 @@ pipeline{
     stages{
         stage('Compile'){
             steps{
-                git https://github.com/MudassirKhan22/New-addressbook.git
+                git 'https://github.com/MudassirKhan22/New-addressbook.git'
                 sh 'mvn compile'
             }
         }
