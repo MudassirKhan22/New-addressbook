@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.edurekademo.tutorial</groupId>
     <artifactId>addressbook</artifactId>
@@ -23,7 +23,7 @@
         </repository>
         <!-- Essential Vaadin artifacts are in maven central, but maven.vaadin.com 
             contains a huge set of additional libraries. See vaadin.com/directory -->
-        <repository>
+       <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
         </repository>
@@ -65,7 +65,7 @@
             <artifactId>vaadin-compatibility-shared</artifactId>
             <version>${vaadin.version}</version>
         </dependency>
-        <dependency>
+         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-compatibility-client-compiled</artifactId>
             <version>${vaadin.version}</version>
@@ -90,72 +90,72 @@
             <version>1.9.2</version>
             <type>jar</type>
         </dependency>
+		
+				<!-- LOGGING -->
+		<dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.9</version>
+</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
 
-        <!-- LOGGING -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.7</version>
-        </dependency>
-
-        <!-- TESTING -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.7</version>
-            <scope>test</scope>
-        </dependency>
-
-
-        <!-- COMMONS -->
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
-        </dependency>
-
-        <!-- JSON -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20140107</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-jaxrs</artifactId>
-            <version>1.9.4</version>
-        </dependency>
-
-        <!-- XML -->
-        <dependency>
-            <groupId>com.sun.xml.security</groupId>
-            <artifactId>xml-security-impl</artifactId>
-            <version>1.0</version>
-        </dependency>
+				<!-- TESTING -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
 
 
-    </dependencies>
+		<!-- COMMONS -->
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- JSON -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20140107</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.4</version>
+		</dependency>
+
+		<!-- XML -->
+		<dependency>
+			<groupId>com.sun.xml.security</groupId>
+			<artifactId>xml-security-impl</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+		</dependencies>
 
     <build>
         <plugins>
@@ -173,41 +173,41 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.2.3.v20140905</version>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <threadCount>10</threadCount>
-                    <includes>
-                        <include>**/Test*.java</include>
-                        <include>**/Test.java</include>
-                        <include>**/TestCase.java</include>
-                    </includes>
-                    <excludes>
-                        <exclude>**/*Abstract*Test.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
+			
+						<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<threadCount>10</threadCount>
+					<includes>
+						<include>**/Test*.java</include>
+						<include>**/Test.java</include>
+						<include>**/TestCase.java</include>
+					</includes>
+					<excludes>
+						<exclude>**/*Abstract*Test.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 
         </plugins>
-        <finalName>addressbook</finalName>
+		<finalName>addressbook</finalName>
     </build>
-
-
+	
+	  
     <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.19.1</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
-    <profiles>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.19.1</version>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+      <profiles>
         <profile>
             <id>development</id>
             <activation>
@@ -221,18 +221,18 @@
                 <plugins>
                     <!-- CHECKSTYLE -->
                     <!--<plugin>-->
-                    <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
-                    <!--<version>2.9.1</version>-->
-                    <!--<dependencies>-->
-                    <!--<dependency>-->
-                    <!--<groupId>com.wakaleo.gameoflife</groupId>-->
-                    <!--<artifactId>gameoflife-build</artifactId>-->
-                    <!--<version>${project.version}</version>-->
-                    <!--</dependency>-->
-                    <!--</dependencies>-->
-                    <!--<configuration>-->
-                    <!--<configLocation>custom-checkstyle.xml</configLocation>-->
-                    <!--</configuration>-->
+                        <!--<artifactId>maven-checkstyle-plugin</artifactId>-->
+                        <!--<version>2.9.1</version>-->
+                        <!--<dependencies>-->
+                            <!--<dependency>-->
+                                <!--<groupId>com.wakaleo.gameoflife</groupId>-->
+                                <!--<artifactId>gameoflife-build</artifactId>-->
+                                <!--<version>${project.version}</version>-->
+                            <!--</dependency>-->
+                        <!--</dependencies>-->
+                        <!--<configuration>-->
+                            <!--<configLocation>custom-checkstyle.xml</configLocation>-->
+                        <!--</configuration>-->
                     <!--</plugin>-->
 
                     <!-- PMD -->
