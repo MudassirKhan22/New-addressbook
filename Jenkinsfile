@@ -2,7 +2,7 @@ pipeline{
     agent any
 
      tools {
-        java "myjava"
+        jdk "myjava"
         maven "mymaven"
     }
 
