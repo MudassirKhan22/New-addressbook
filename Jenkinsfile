@@ -1,6 +1,11 @@
 pipeline{
     agent any
 
+     tools {
+        java "myjava"
+        maven "mymaven"
+    }
+
     stages{
         stage('Compile'){
             steps{
