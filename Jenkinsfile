@@ -1,5 +1,5 @@
 pipeline{
-    agent any
+    agent none
 
      tools {
         maven "mymaven"
@@ -15,6 +15,7 @@ pipeline{
 
     stages{
         stage('Compile'){
+            agent any
             steps{
                 echo "Environment to deploy:${params.Env}"
                 echo "Compiling the code"
@@ -24,6 +25,7 @@ pipeline{
         }
 
         stage('UnitTest'){
+            agent any
             when{
                 expression{
                     params.ExecuteTest==true
@@ -36,10 +38,15 @@ pipeline{
         }
 
         stage('Package'){
+            agent any
             steps{
-                echo "Packing the code"
-                sh 'mvn package'
-                echo "Deploying app version:${params.Appversion}"
+                script{
+                    sshagent([my-slave-private-key]){
+                    echo "Packing the code"
+                    sh 'mvn package'
+                    echo "Deploying app version:${params.Appversion}"
+                    }
+                }  
             }
         }
 
