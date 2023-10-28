@@ -41,7 +41,7 @@ pipeline{
             agent any
             steps{
                 script{
-                    sshagent([my-slave-private-key]){
+                    sshagent(['my-slave-private-key']){
                     echo "Packing the code"
                     sh 'mvn package'
                     echo "Deploying app version:${params.Appversion}"
