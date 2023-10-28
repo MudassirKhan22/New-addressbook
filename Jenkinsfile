@@ -7,7 +7,7 @@ pipeline{
 
     parameters{
         string(name: 'Env', defaultValue: 'Test', description: 'Env to Deploy')
-        booleanParam(name:'ExecuteTest', defaultValue: true, description=:'Decide to run test cases')
+        booleanParam(name:'ExecuteTest', defaultValue: true, description:'Decide to run test cases')
         choice(name: 'Appversion', choices: ['1.1','1.2','1.3'], description: 'Select the version')
     }
 
