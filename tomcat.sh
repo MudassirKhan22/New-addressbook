@@ -1,7 +1,7 @@
 #1 /bin/bash
 
 sudo yum install tomcat -y
-NEW_PORT="9090" 
+NEW_PORT="8081" 
 SERVER_XML="/usr/share/tomcat/conf/server.xml"
 
 if grep -q 'Connector port="8080"' "$SERVER_XML"; then
