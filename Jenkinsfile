@@ -55,6 +55,9 @@ pipeline{
                     echo "Packing the code"
                     sh "scp -o strictHostKeyChecking=no server-config.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
                     sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} bash '/home/ec2-user/server-config.sh' "
+
+                    sh "scp -o strictHostKeyChecking=no tomcat.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
+                    sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} bash '/home/ec2-user/tomcat.sh' "
                     echo "Deploying app version:${params.Appversion}"
                     }
                 }  
