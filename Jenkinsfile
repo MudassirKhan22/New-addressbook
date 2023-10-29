@@ -1,5 +1,5 @@
 pipeline{
-    agent none
+       agent none
 
      tools {
         maven "mymaven"
@@ -14,8 +14,6 @@ pipeline{
         booleanParam(name:'ExecuteTest', defaultValue: true, description:'Decide to run test cases')
         choice(name: 'Appversion', choices: ['1.1','1.2','1.3'], description: 'Select the version')
     }
-
-
 
     stages{
         stage('Compile'){
