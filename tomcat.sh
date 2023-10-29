@@ -17,4 +17,5 @@ then
     echo "War File is already available"
 else
     cp /home/ec2-user/New-addressbook/target/addressbook.war ./
+fi
 
