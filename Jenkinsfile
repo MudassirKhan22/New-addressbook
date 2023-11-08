@@ -7,7 +7,7 @@ pipeline{
 
     environment{
         PACKAGE_SERVER_IP= 'ec2-user@13.233.19.123'
-        IMAGE_NAME= 'mudassir12/New-addressbook'
+        IMAGE_NAME= 'mudassir12/new-addressbook'
     }
 
     parameters{
@@ -55,7 +55,7 @@ pipeline{
     
                         sh "scp -o strictHostKeyChecking=no server-config.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
                         sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo bash /home/ec2-user/server-config.sh"
-                        sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} /home/ec2-user/new-addressbook"
+                        sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} /home/ec2-user/New-addressbook"
                         sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
                         sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
                         }
