@@ -12,4 +12,6 @@ then
 else
     git clone https://github.com/MudassirKhan22/New-addressbook.git
 fi
-    
+    cd /home/ec2-user/New-addressbook
+    git checkout cicd-docker
+    sudo docker build -t $1:$2 /home/ec2-user/New-addressbook
