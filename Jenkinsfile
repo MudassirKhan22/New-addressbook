@@ -6,7 +6,7 @@ pipeline{
     }
 
     environment{
-        PACKAGE_SERVER_IP= 'ec2-user@3.111.42.71'
+        PACKAGE_SERVER_IP= 'ec2-user@172.31.14.57'
     }
 
     parameters{
