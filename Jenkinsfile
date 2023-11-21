@@ -45,18 +45,19 @@ pipeline{
             }  
         }
 
-        stage('Package'){
+        stage('Package+Build the docker file+Push docker image to registry'){
             agent any
             steps{
                 script{
                     sshagent(['KP']){
-                    echo "Packing the code"
-                    sh "scp -o strictHostKeyChecking=no server-config.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
-                    sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} bash '/home/ec2-user/server-config.sh' "
-
-                    sh "scp -o strictHostKeyChecking=no tomcat.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
-                    sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP}  sudo bash '/home/ec2-user/tomcat.sh' "
-                    echo "Deploying app version:${params.Appversion}"
+                        withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentilas', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+    
+                        sh "scp -o strictHostKeyChecking=no server-config.sh ${PACKAGE_SERVER_IP}:/home/ec2-user"
+                        sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo bash /home/ec2-user/server-config.sh ${IMAGE_NAME} ${BUILD_NUMBER}"
+                        //sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker build -t ${IMAGE_NAME}:${BUILD_NUMBER} /home/ec2-user/New-addressbook"
+                        sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker login -u ${USERNAME} -p ${PASSWORD}"
+                        sh "ssh -o strictHostKeyChecking=no ${PACKAGE_SERVER_IP} sudo docker push ${IMAGE_NAME}:${BUILD_NUMBER}"
+                        }
                     }
                 }  
             }
